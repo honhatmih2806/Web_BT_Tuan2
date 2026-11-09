@@ -1,0 +1,31 @@
+# Maven Build Output
+target/
+*.war
+*.jar
+*.class
+*.zip
+
+# Tomcat Local Directory & Logs
+apache-tomcat-*/
+logs/
+temp/
+work/
+*.log
+*.pid
+
+# IDE & Editor Configurations
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS & Temporary Files
+.DS_Store
+Thumbs.db
+/tmp/
+*~
+
+# Database local storage volume
+database/data/

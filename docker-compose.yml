@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # Dịch vụ 1: Microsoft SQL Server 14.x (SQL Server 2017)
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: hcmute_sqlserver_14
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Passw0rd
+      - MSSQL_PID=Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'YourStrong@Passw0rd' -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - hcmute_network
+
+  # Dịch vụ 2: Ứng dụng Web Servlet (Tomcat 11 & Jakarta EE)
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hcmute_webapp_3tier
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=sqlserver
+      - DB_PORT=1433
+      - DB_NAME=HCMUTE_WebDemo
+      - DB_USER=sa
+      - DB_PASSWORD=YourStrong@Passw0rd
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    networks:
+      - hcmute_network
+
+volumes:
+  mssql_data:
+    driver: local
+
+networks:
+  hcmute_network:
+    driver: bridge

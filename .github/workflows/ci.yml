@@ -1,0 +1,32 @@
+name: Java CI/CD with Maven & Tomcat 11
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Kiểm tra mã nguồn (Checkout code)
+      uses: actions/checkout@v4
+
+    - name: Cài đặt JDK 17 (Eclipse Temurin)
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Biên dịch và chạy kiểm thử JUnit 5
+      run: mvn -B clean verify --file pom.xml
+
+    - name: Lưu trữ gói sản phẩm (Upload WAR Artifact)
+      uses: actions/upload-artifact@v4
+      with:
+        name: demo-3tier-war
+        path: target/*.war
+        retention-days: 7
