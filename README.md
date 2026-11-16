@@ -1,4 +1,4 @@
-# 🌸 HCMUTE 3-Tier Web Application (Jakarta EE 11 & Tomcat 11) 🌸
+# 🌸 HCMUTE 3-Tier Web Application 🌸
 
 [![Java CI/CD](https://github.com/actions/workflows/ci.yml/badge.svg)](https://github.com)
 ![Java](https://img.shields.io/badge/Java-17%20LTS-orange.svg)
