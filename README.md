@@ -1,4 +1,4 @@
-# 🌸 HCMUTE 3-Tier Web Application (Jakarta EE 11 & Tomcat 11) 🌸
+# 🌸 HCMUTE 3-Tier Web Application 🌸
 
 [![Java CI/CD](https://github.com/actions/workflows/ci.yml/badge.svg)](https://github.com)
 ![Java](https://img.shields.io/badge/Java-17%20LTS-orange.svg)
@@ -111,22 +111,5 @@ Dự án đã tích hợp đầy đủ file cấu hình cho các nền tảng đ
 - [`deploy/render.yaml`](deploy/render.yaml): Triển khai miễn phí trên Render.com.
 - [`deploy/railway.json`](deploy/railway.json): Triển khai trên Railway.app.
 - Chi tiết hướng dẫn xem tại: [`deploy/DEPLOY_GUIDE.md`](deploy/DEPLOY_GUIDE.md).
-
----
-
-## 🐙 Cách Đưa Dự Án Lên GitHub (Khi bạn muốn)
-
-Dự án đã được cấu hình Git và commit cục bộ sẵn sàng. Khi bạn muốn đưa lên GitHub, chỉ cần thực hiện 2 lệnh:
-
-```bash
-# 1. Liên kết với repository GitHub của bạn (thay URL bằng link repo thật của bạn):
-git remote add origin https://github.com/<tai-khoan-cua-ban>/<ten-repo>.git
-
-# 2. Đẩy toàn bộ mã nguồn lên nhánh main:
-git push -u origin main
-```
-Ngay sau khi push, GitHub Actions (`.github/workflows/ci.yml`) sẽ tự động kích hoạt để build và kiểm thử mã nguồn.
-
----
 
 &copy; 2026 HCM-UTE | Giảng viên hướng dẫn: **ThS. Nguyễn Hữu Trung**
