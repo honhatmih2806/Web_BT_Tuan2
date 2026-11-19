@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+    <!-- Cấu hình Sitemesh 3 Decorators với Template Bootstrap -->
+
+    <!-- Decorator mặc định cho các trang người dùng (Trang chủ, Videos, Profile, Login, Register) -->
+    <mapping path="/*" decorator="/decorators/web.jsp"/>
+
+    <!-- Decorator quản trị cho các trang Admin -->
+    <mapping path="/admin/*" decorator="/decorators/admin.jsp"/>
+
+    <!-- Loại trừ không áp dụng decorator cho ảnh, media và chính thư mục decorators -->
+    <mapping path="/decorators/*" exclue="true"/>
+    <mapping path="/image*" exclue="true"/>
+    <mapping path="/media*" exclue="true"/>
+    <mapping path="*.css" exclue="true"/>
+    <mapping path="*.js" exclue="true"/>
+    <mapping path="*.png" exclue="true"/>
+    <mapping path="*.jpg" exclue="true"/>
+</sitemesh>

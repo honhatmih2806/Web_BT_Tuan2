@@ -1,0 +1,9 @@
+target/
+*.war
+*.log
+.DS_Store
+.idea/
+*.iml
+.settings/
+.project
+.classpath
